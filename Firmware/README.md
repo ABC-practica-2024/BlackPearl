@@ -1,5 +1,5 @@
 # BlackPearl
-## Conectare placa la baterie
+
 ## Folosire baterii
 
 ### Incarcare baterii
