@@ -171,6 +171,7 @@ void reconnect() {
       // Subscribe to your topics
       client.subscribe("motor/left");
       client.subscribe("motor/right");
+      lastConnectionTime = millis();
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
