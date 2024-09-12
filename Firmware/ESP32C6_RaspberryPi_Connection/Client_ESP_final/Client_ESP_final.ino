@@ -18,6 +18,9 @@ const char* mqtt_server = "10.42.0.1";
 const char* mqtt_username = "telecomanda";
 const char* mqtt_password = "ABCabc";
 
+const unsigned long connectionTimeout = 10000; // 10 seconds
+unsigned long lastConnectionTime = 0;
+
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
@@ -206,8 +209,14 @@ void loop() {
   client.loop();
 
   long now = millis();
-  if (now - lastMsg > 5000) {
-    lastMsg = now;
-    delay(100);
+  // if (now - lastMsg > 5000) {
+  //   lastMsg = now;
+  //   delay(100);
+  // }
+  if (millis() - lastConnectionTime > connectionTimeout) {
+    Serial.println("Connection timeout, stopping motors");
+    analogWrite(ledPinRight, 0);
+    analogWrite(ledPinLeft, 0);
+    lastConnectionTime = millis(); 
   }
 }
