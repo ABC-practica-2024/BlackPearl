@@ -59,7 +59,7 @@
 ![Design rotor](https://github.com/ABC-practica-2024/BlackPearl/blob/Design-basic-pentru-coborat/ridicat-camera/Firmware/Design%20Rotor.png)
 
 ### Referinte
--[Brushless ESC Motor](https://www.youtube.com/watch?v=qOzE5F5vFGs)
+-[Brushless ESC Motor](https://www.youtube.com/watch?v=qOzE5F5vFGs)   
 -[Controlling ESC Motor](https://www.youtube.com/watch?v=-EjVWE8KvKE)
 -[Beeping error and Motor calibration](https://forum.flitetest.com/index.php?threads/esc-calibration-and-fast-beeping.8449/)
 -[Manual Sensorless Brushless](https://www.himodel.com/en/info/manual/ESC_Manual_english_Himodel_20060625.pdf)
