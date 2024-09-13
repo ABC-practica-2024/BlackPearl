@@ -26,9 +26,10 @@
 - [Tutorial video pentru utilizarea încărcătorului](https://www.youtube.com/watch?v=iOwl5zBeYW0)
 - [Tutorial video pentru conectarea bateriei la circuit](https://www.youtube.com/shorts/zBXLMM8SL_8)
 
-- ## Design rotor cu sfoara pentru ridicat barca
 
-- ### Circuit initial
+
+## Design rotor cu sfoara pentru ridicat barca
+### Circuit initial
 
 ![Motor Circuit](https://github.com/ABC-practica-2024/BlackPearl/blob/Design-basic-pentru-coborat/ridicat-camera/Firmware/Motor%20Circuit.png)
 #### Componente circuit
@@ -37,11 +38,11 @@
 - **Baterie**
 - **Motor Driver**
 
-  ### Design
+#### Design
   - De motor era atasat un ax pe care se afla un cablu, in functie de directia de rotatie a motorului, cablul era intins sau tras, la capatul cablului este atasata cutia.
 
-- ### Circuit Secundar
 
+### Circuit Secundar
 ![Brushless Motor Circuit](https://github.com/ABC-practica-2024/BlackPearl/blob/Design-basic-pentru-coborat/ridicat-camera/Firmware/image.png)
 #### Componente circuit
 - **Brushless ESC S-25A**
