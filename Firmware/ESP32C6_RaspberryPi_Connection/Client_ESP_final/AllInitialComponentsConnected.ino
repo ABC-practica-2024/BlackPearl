@@ -1,9 +1,6 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <Wire.h>
-//#include <ESP32Servo.h>
-#include <Servo.h>
-
 
 // MODE-RED (Platform for controlling devices using MQTT)
 
@@ -39,9 +36,10 @@ const int ledPinRight = 6;  // Pin for right motor
 
 // Servo 
 
-const int servoPin = 9;    // Pin for servo
-Servo ESC;                 // Servo object to control the ESC (Electronic Speed Controller)
-int throttle = 90;         // Default throttle value
+const int SPEED_PIN_MOTOR = 4;
+const int DIRECTION_PIN_MOTOR = 5;
+const int LOW_LVL_POWER = 0;
+const int HIGH_LVL_POWER = 200;
 
 // ---------------------------------------------------------------------
 
@@ -130,10 +128,8 @@ void setup_motors(){
 
 // Function to initialize and calibrate servo motor (ESC)
 void setup_servo() {
-  pinMode(servoPin, OUTPUT);
-  ESC.attach(servoPin, 1000, 2000);  // Attach servo with calibration pulse width
-  ESC.write(throttle);  // Initialize throttle
-  delay(2000);  // Allow servo to stabilize
+  analogWrite(SPEED_PIN_MOTOR, 0);
+  analogWrite(DIRECTION_PIN_MOTOR, 0);
 }
 
 
@@ -322,25 +318,26 @@ void Topic_motor_left(String& message)
 
 void Topic_servo(String& message){
 
-  if(message == "stop")
-  {
-    throttle = 90;
+  if(message == "stop" || message == "drop" || message == "pull"){
+    for (int i=200; i>=LOW_LVL_POWER; i-=50) {
+      analogWrite(SPEED_PIN_MOTOR,i);
+      delay(250);
+    }
+
+    if(message == "pull")
+    {
+      analogWrite(DIRECTION_PIN_MOTOR, 0);
+    } 
+    else if(message == "drop")
+    {
+      analogWrite(DIRECTION_PIN_MOTOR, 1);
+    }
+    for (int i=0; i<=HIGH_LVL_POWER && message != "stop"; i+=50)
+    {
+      analogWrite(SPEED_PIN_MOTOR,i);
+      delay(250);
+    }
   }
-  else if(message == "pull"){
-    throttle = 95;
-  }
-  else if(message == "drop"){
-    throttle = 85;
-    ESC.write(throttle);
-    delay(75);
-    ESC.write(90); //it's the only way that works
-    delay(12);
-      
-  }
-  Serial.print("Changed to: ");
-  Serial.println(throttle);
-  ESC.write(throttle);
-  
 }
 
 
