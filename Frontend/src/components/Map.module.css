@@ -1,0 +1,43 @@
+/* Wrapper to center the map container */
+.mapWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+}
+
+/* Map container - perfect circle and centered */
+.mapContainer {
+  position: relative; /* For absolute positioning of the button */
+  height: 700px;
+  width: 700px;
+  border-radius: 50%;
+  background-color: var(--color-dark--2);
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centers the button inside the map */
+  overflow: hidden; /* Prevents content from spilling outside the circle */
+}
+
+/* Map styling */
+.map {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%; /* Keeps the map circular */
+}
+
+/* Button inside the map, centered */
+.mapButton {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  padding: 10px 20px;
+  background-color: var(--color-brand--2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1000; /* Ensure the button stays above the map */
+  transform: translateX(-50%);
+}
